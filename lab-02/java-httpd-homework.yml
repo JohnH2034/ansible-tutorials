@@ -1,0 +1,16 @@
+# homework for httpd
+---
+- hosts: node04 node03
+  become: true
+  vars: 
+    http_port: 8080
+  tasks:
+  - name: Install httpd on RedHat
+    yum: name=httpd  state=present
+    when: ansible_os_family == "RedHat"
+  - name: Install httpd on Ubuntu
+    apt: name=httpd state=present
+    when: ansible_os_family == "ubuntu"
+  - name: start the service
+    service: name=httpd state=started enabled=yes
+    
