@@ -1,4 +1,4 @@
-# homework for httpd
+# homework for httpd and apache2
 ---
 - hosts: node04 node03
   become: true
@@ -8,9 +8,9 @@
   - name: Install httpd on RedHat
     yum: name=httpd  state=present
     when: ansible_os_family == "RedHat"
-  - name: Install httpd on Ubuntu
-    apt: name=httpd state=present
-    when: ansible_os_family == "ubuntu"
-  - name: start the service
+  - name: Install apache2 on Ubuntu
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+  - name: start the service RedHat
     service: name=httpd state=started enabled=yes
-    
+    when: ansible_os_family == "RedHat"
