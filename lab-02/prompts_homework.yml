@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  vars_prompt:
+    - name: "user"
+      prompt: "Please enter user name: "
+    
+  tasks:
+    - debug: var=user
