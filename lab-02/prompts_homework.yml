@@ -1,8 +1,24 @@
 ---
-- hosts: localhost
+- hosts: node01 node02 node04
+  become: true
   vars_prompt:
     - name: "user"
-      prompt: "Please enter user name: "
+      prompt: "Please enter user name "
     
   tasks:
-    - debug: var=user
+  - debug: var=user
+
+  - name: Add a user
+    user:
+      name: "{{ user }}"
+      create_home: yes
+
+  - name: create directory in /home/ec2-user
+    file:
+      dest: "/home/ec2-user/{{ user }}"
+      state: directory
+      mode: 0644
+
+  - debug: 
+      var: hostvars[inventory_hostname]['ansible_facts']['eth0']['ipv4']['address']
+    
