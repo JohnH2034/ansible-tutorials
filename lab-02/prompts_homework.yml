@@ -1,0 +1,22 @@
+---
+- hosts: localhost
+  vars_prompt:
+  - name: "user"
+    prompt: "Enter user name: "
+
+  tasks:
+  - debug: var=user
+
+  - name: Add the prompted user
+    user: 
+      name: "{{ user }}"
+      create_home: yes
+      password_lock: yes
+      uid: "{{ item }}"
+      with_sequence: start=1001 end=1005
+
+  - name: create directory in /home/ec2-user
+    file:
+      dest: "/home/ec2-user/{{ user }}"
+      state: directory
+      
