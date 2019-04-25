@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash
 # ad-hoc-homework.sh
 
 echo  -n "Input file name :"
