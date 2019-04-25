@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 - hosts: node01 node02 node04
   become: true
@@ -22,3 +23,27 @@
   - debug: 
       var: hostvars[inventory_hostname]['ansible_facts']['eth0']['ipv4']['address']
     
+=======
+---
+- hosts: localhost
+  vars_prompt:
+  - name: "user"
+    prompt: "Enter user name: "
+
+  tasks:
+  - debug: var=user
+
+  - name: Add the prompted user
+    user: 
+      name: "{{ user }}"
+      create_home: yes
+      password_lock: yes
+      uid: "{{ item }}"
+      with_sequence: start=1001 end=1005
+
+  - name: create directory in /home/ec2-user
+    file:
+      dest: "/home/ec2-user/{{ user }}"
+      state: directory
+      
+>>>>>>> c009d45424397067b1ca895d4637ddc6ad3048a7
