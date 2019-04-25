@@ -6,3 +6,4 @@ node04 ansible_ssh_Host=ec2-34-219-49-10.us-west-2.compute.amazonaws.com ansible
 node01
 [webservers]
 node02
+node04
