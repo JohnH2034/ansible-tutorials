@@ -1,5 +1,6 @@
 #!/bin/bash
 # ad-hoc-homework.sh
+# change for CRLF
 
 echo  -n "Input file name :"
 read filename
