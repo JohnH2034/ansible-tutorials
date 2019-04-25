@@ -1,7 +1,7 @@
 #!/bin/bash
 # ad-hoc-homework.sh
 # change for CRLF
-
+# change foe file type
 echo  -n "Input file name :"
 read filename
 if [ -f $filename ] ; then
