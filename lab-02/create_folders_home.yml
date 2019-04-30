@@ -1,0 +1,14 @@
+---
+- hosts: node01 node02 node04
+  become: true
+  tasks:
+  - name: create folders 
+    file:  
+      path: "/home/ec2-user/{{ item }}"
+      state: directory
+    with_list:
+        - yelp
+        - google
+        - apple
+        - yahoo
+       

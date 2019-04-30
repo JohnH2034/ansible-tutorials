@@ -1,0 +1,14 @@
+# home for using with_items
+---
+- hosts: node01 node02 node04
+  become: true
+  tasks:
+  - name: Install these packages mlocate, strace, java 8 and php5
+    yum:
+      name: "{{ item }}"
+      state: present
+    loop:
+       - mlocate
+       - strace
+       - java-1.8.0-openjdk
+       - php
